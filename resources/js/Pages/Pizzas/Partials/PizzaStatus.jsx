@@ -6,7 +6,17 @@ const PizzaStatus = ({ currentStatus }) => {
     const getClass = (status, index) => {
         let baseClasses = "w-1/5 bg-gradient-to-b flex items-center justify-center h-20 border-r-2 transition-all";
 
+        if (index === 0) {
+            baseClasses += " rounded-l-full";
+        }
+
+        if (index === statuses.length - 1) {
+            baseClasses = baseClasses.replace("border-r-2", "rounded-r-full");
+        }
+
         if (status === currentStatus) {
+            baseClasses = baseClasses.replace("border-r-2", "");
+
             return `${baseClasses} from-red-500 to-red-600 scale-110 rounded shadow-lg`;
         }
 
