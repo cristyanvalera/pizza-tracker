@@ -6,7 +6,7 @@ const Show = ({ pizza }) => {
     useEffect(() => {
         let interval = setInterval(() => {
             router.reload({ only: ['pizza'] })
-        }, 10000);
+        }, 1000);
 
         return () => clearInterval(interval);
     }, []);
