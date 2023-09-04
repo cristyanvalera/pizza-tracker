@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pizza;
-use Illuminate\Http\Request;
 use Inertia\{Inertia, Response};
+use Illuminate\Http\{RedirectResponse, Request};
 
 class PizzaController extends Controller
 {
