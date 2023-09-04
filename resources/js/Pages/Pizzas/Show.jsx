@@ -1,7 +1,16 @@
-import { Head } from "@inertiajs/react";
+import { Head, router } from "@inertiajs/react";
 import PizzaStatus from "./Partials/PizzaStatus";
+import { useEffect } from "react";
 
 const Show = ({ pizza }) => {
+    useEffect(() => {
+        let interval = setInterval(() => {
+            router.reload({ only: ['pizza'] })
+        }, 10000);
+
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <div className="max-w-3xl mx-auto py-12">
             <Head title={'Order #' + pizza.id} />
@@ -16,9 +25,9 @@ const Show = ({ pizza }) => {
                     </g>
                 </svg>
             </div>
-            
+
             <PizzaStatus currentStatus={pizza.status} />
-            
+
             <div className="text-center mt-4">
                 <p className="text-lg">
                     <span className="uppercase text-blue-700">{pizza.chef}</span> started {pizza.status.toLowerCase()} your order <span className="underline font-semibold">{pizza.last_updated}</span>
@@ -28,4 +37,4 @@ const Show = ({ pizza }) => {
     );
 }
 
-export default Show
+export default Show;
